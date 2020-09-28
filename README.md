@@ -1,3 +1,3 @@
 **Lab 1. Simple Shopping Calculator**
 
-![](Lab1-Demo.png)
+![](Lab1_Shopping_Calculator/Lab1-Demo.png)
