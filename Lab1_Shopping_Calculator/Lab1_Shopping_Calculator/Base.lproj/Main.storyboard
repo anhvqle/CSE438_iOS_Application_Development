@@ -22,6 +22,7 @@
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="change_inputs:" destination="BYZ-38-t0r" eventType="editingChanged" id="K31-h2-UEP"/>
+                                    <action selector="selectPrice:" destination="BYZ-38-t0r" eventType="touchDown" id="NVj-qh-vlY"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A1d-dP-Rpf">
@@ -31,6 +32,7 @@
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="change_inputs:" destination="BYZ-38-t0r" eventType="editingChanged" id="fCp-xe-7ag"/>
+                                    <action selector="selectDiscount:" destination="BYZ-38-t0r" eventType="touchDown" id="GpK-kH-IGj"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="etI-EV-3hV">
@@ -40,6 +42,7 @@
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="change_inputs:" destination="BYZ-38-t0r" eventType="editingChanged" id="eps-GI-OkK"/>
+                                    <action selector="selectTax:" destination="BYZ-38-t0r" eventType="touchDown" id="yGO-jx-WkS"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Discount %" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exS-St-q7u">
