@@ -1,0 +1,57 @@
+
+/* Class = "UIButton"; normalTitle = "1"; ObjectID = "1gf-qZ-0ew"; */
+"1gf-qZ-0ew.normalTitle" = "1";
+
+/* Class = "UIButton"; normalTitle = "2"; ObjectID = "3gM-nU-sBo"; */
+"3gM-nU-sBo.normalTitle" = "2";
+
+/* Class = "UIButton"; normalTitle = "AC"; ObjectID = "EB2-84-wHJ"; */
+"EB2-84-wHJ.normalTitle" = "AC";
+
+/* Class = "UIButton"; normalTitle = "0"; ObjectID = "FQ6-6d-kfj"; */
+"FQ6-6d-kfj.normalTitle" = "0";
+
+/* Class = "UIButton"; normalTitle = "6"; ObjectID = "Sjf-eI-00N"; */
+"Sjf-eI-00N.normalTitle" = "6";
+
+/* Class = "UILabel"; text = "Sales Tax %"; ObjectID = "X2l-bU-Gy5"; */
+"X2l-bU-Gy5.text" = "Impuesto %";
+
+/* Class = "UIButton"; normalTitle = "DEL"; ObjectID = "a34-gR-KsM"; */
+"a34-gR-KsM.normalTitle" = "DEL";
+
+/* Class = "UILabel"; text = "Final Price"; ObjectID = "aeA-BX-9gf"; */
+"aeA-BX-9gf.text" = "Precio Final";
+
+/* Class = "UIButton"; normalTitle = "="; ObjectID = "dNx-Fc-k78"; */
+"dNx-Fc-k78.normalTitle" = "=";
+
+/* Class = "UIButton"; normalTitle = "3"; ObjectID = "ewQ-OH-oV7"; */
+"ewQ-OH-oV7.normalTitle" = "3";
+
+/* Class = "UILabel"; text = "Discount %"; ObjectID = "exS-St-q7u"; */
+"exS-St-q7u.text" = "Descuento %";
+
+/* Class = "UIButton"; normalTitle = "5"; ObjectID = "hgh-g8-6i3"; */
+"hgh-g8-6i3.normalTitle" = "5";
+
+/* Class = "UIButton"; normalTitle = "9"; ObjectID = "hzI-2z-10H"; */
+"hzI-2z-10H.normalTitle" = "9";
+
+/* Class = "UIButton"; normalTitle = "."; ObjectID = "kdc-gC-EcV"; */
+"kdc-gC-EcV.normalTitle" = ".";
+
+/* Class = "UILabel"; text = "00.00"; ObjectID = "l7n-0s-rfN"; */
+"l7n-0s-rfN.text" = "00.00";
+
+/* Class = "UIButton"; normalTitle = "4"; ObjectID = "mVO-L4-0zF"; */
+"mVO-L4-0zF.normalTitle" = "4";
+
+/* Class = "UIButton"; normalTitle = "8"; ObjectID = "rY8-2O-ph4"; */
+"rY8-2O-ph4.normalTitle" = "8";
+
+/* Class = "UILabel"; text = "Original Price"; ObjectID = "wI3-d3-EaY"; */
+"wI3-d3-EaY.text" = "Precio Original";
+
+/* Class = "UIButton"; normalTitle = "7"; ObjectID = "x7O-Ei-YUJ"; */
+"x7O-Ei-YUJ.normalTitle" = "7";
