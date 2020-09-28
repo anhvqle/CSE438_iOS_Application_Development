@@ -1,3 +1,5 @@
+![](Lab1-Demo.png)
+
 Creative Portions: Implement Calculator Buttons for User instead of using keyboards to type inputs
 
 1. What I Implemented
