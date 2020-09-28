@@ -1,6 +1,4 @@
-![](Lab1-Demo.png)
-
-Creative Portions: Implement Calculator Buttons for User instead of using keyboards to type inputs
+Creative Portions: Implement Simple Calculator Buttons for User instead of using keyboards to type inputs
 
 1. What I Implemented
 - I implemented number buttons as well as DEL and AC buttons on screen to provide users with interactive features to deploy on an actual iPhones without having to use the laptop keyboards to type in the original price, discount, or sales tax. To use the buttons, the users have to select a field and then just simply type in whatever number they want. With that said, this does not eliminate the keyboards. The app is still running perfectly fine with a combination of screen buttons and keyboard inputs. This on-screen calculator should be easy to use and navigate. Note that you cannot enter a value higher than 100 for the discount percentage; any discount value higher than 100 will automatically be set to 100. 
