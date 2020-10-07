@@ -37,7 +37,16 @@ do {
 let soda = try? buy(itemNumber: 22)
 //: If the function throws, the variable will be nil. So instead of the `do-catch` syntax, we can use our fancy optional unwrapping syntax instead.
 //: + callout(Vending Machine Errors): Modify the function below called `purchase` so it can possibly throw all three vending machine errors.
-func purchase(itemNumber: Int, currentStock: Int, inService: Bool) -> String {
+func purchase(itemNumber: Int, currentStock: Int, inService: Bool) throws -> String {
+    if !inService {
+        throw VendingMachineError.outOfService;
+    }
+    else if itemNumber < 0 || currentStock < 0 {
+        throw VendingMachineError.invalidNumber;
+    }
+    else if currentStock == 0 {
+        throw VendingMachineError.noMoreSoda;
+    }
     return "Coke"
 }
 //:

@@ -6,7 +6,7 @@
 //: Remember the `Quick Look` icon from the first page of this playground? It will actually render most UIKit elements, so you can see the effects of your code immidiately as you type it.
 import UIKit
 let sampleView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-sampleView.backgroundColor = UIColor.red
+sampleView.backgroundColor = UIColor.blue
 //: ### Core Graphics Basics
 //: Create and initialize variables of type `CGPoint` and `CGSize`. Next, create a `CGRect` with the point and size you just created.
 

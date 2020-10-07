@@ -26,7 +26,15 @@ extension Int {
 7.isEven()
 10.isEven()
 //: + callout(Extend the String struct): Extend the built-in `String` struct with a function named `removeVowels` that removes all vowels (a, e, i, o, u) from the string.
-
+extension String {
+    func removeVowels() -> String{
+        let vowels: Set<Character> = ["a", "e", "i", "o", "u"]
+        var newString: String = self
+        newString.removeAll(where: { vowels.contains($0) })
+        return newString
+    }
+}
+print("halo".removeVowels())
 //:
 //: [Previous](@previous) | [Next](@next)
 //:

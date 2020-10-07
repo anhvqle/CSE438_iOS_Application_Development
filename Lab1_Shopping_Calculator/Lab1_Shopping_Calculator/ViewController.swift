@@ -1,4 +1,4 @@
-//
+ //
 //  ViewController.swift
 //  Lab1_Shopping_Calculator
 //
