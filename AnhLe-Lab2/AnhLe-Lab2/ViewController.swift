@@ -18,7 +18,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var happinessBar: DisplayView!
     @IBOutlet weak var foodBar: DisplayView!
     
-    let animals = ["Dog", "Cat", "Bird", "Bunny", "Fish"]
     let animalImages = [UIImage(named: "dog"),
                         UIImage(named: "cat"),
                         UIImage(named: "bird"),
@@ -28,20 +27,21 @@ class ViewController: UIViewController {
     var currentAnimal: Animal?
     var globalTag = 0
     
-    var currentDog = Animal(animalType: .Dog)
-    var currentCat = Animal(animalType: .Dog)
-    var currentBird = Animal(animalType: .Dog)
-    var currentFish = Animal(animalType: .Dog)
-    var currentBunny = Animal(animalType: .Dog)
+    var currentDog = Animal()
+    var currentCat = Animal()
+    var currentBird = Animal()
+    var currentFish = Animal()
+    var currentBunny = Animal()
+    var animals: [Animal]?
+    var colors: [UIColor] = [.red, .blue, .yellow, .orange, .purple]
     
     @IBOutlet weak var currentAnimalPicture: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the
-        //Initialize a Dog Animal
+        animals = [currentDog, currentCat, currentBird, currentBunny, currentFish]
         currentAnimal = currentDog
-        
         PetView.backgroundColor = .red
         happinessBar.color = .red
         foodBar.color = .red
@@ -76,141 +76,59 @@ class ViewController: UIViewController {
     
     @IBAction func changeAnimal(_ sender: UIButton) {
         currentAnimalPicture.image = animalImages[sender.tag]
-        if(sender.tag == 0){
-            globalTag = 0
-            currentAnimal = currentDog
-            PetView.backgroundColor = .red
-            happinessBar.color = .red
-            foodBar.color = .red
-            updateDisplay()
-        }
-        else if(sender.tag == 1){
-            globalTag = 1
-            currentAnimal = currentCat
-            PetView.backgroundColor = .blue
-            happinessBar.color = .blue
-            foodBar.color = .blue
-            updateDisplay()
-        }
-        else if(sender.tag == 2){
-            globalTag = 2
-            currentAnimal = currentBird
-            PetView.backgroundColor = .yellow
-            happinessBar.color = .yellow
-            foodBar.color = .yellow
-            updateDisplay()
-        }
-        else if(sender.tag == 3){
-            globalTag = 3
-            currentAnimal = currentBunny
-            PetView.backgroundColor = .orange
-            happinessBar.color = .orange
-            foodBar.color = .orange
-            updateDisplay()
-        }
-        else if(sender.tag == 4){
-            globalTag = 4
-            currentAnimal = currentFish
-            PetView.backgroundColor = .purple
-            happinessBar.color = .purple
-            foodBar.color = .purple
-            updateDisplay()
-        }
+        globalTag = sender.tag
+        currentAnimal = animals![sender.tag]
+        PetView.backgroundColor = colors[sender.tag]
+        happinessBar.color = colors[sender.tag]
+        foodBar.color = colors[sender.tag]
+        updateDisplay()
+    }
+    
+    func arrayButtons(_ tagNum: Int){
+        currentAnimalPicture.image = animalImages[tagNum]
+        currentAnimal = animals![tagNum]
+        PetView.backgroundColor = colors[tagNum]
+        happinessBar.color = colors[tagNum]
+        foodBar.color = colors[tagNum]
     }
     
     @IBAction func leftArrow(_ sender: UIButton) {
         if(globalTag == 1){
             globalTag = 0
-            currentAnimalPicture.image = animalImages[globalTag]
-            currentAnimal = currentDog
-            PetView.backgroundColor = .red
-            happinessBar.color = .red
-            foodBar.color = .red
-            updateDisplay()
         }
         else if(globalTag == 2){
             globalTag = 1
-            currentAnimalPicture.image = animalImages[globalTag]
-            currentAnimal = currentCat
-            PetView.backgroundColor = .blue
-            happinessBar.color = .blue
-            foodBar.color = .blue
-            updateDisplay()
         }
         else if(globalTag == 3){
             globalTag = 2
-            currentAnimalPicture.image = animalImages[globalTag]
-            currentAnimal = currentBird
-            PetView.backgroundColor = .yellow
-            happinessBar.color = .yellow
-            foodBar.color = .yellow
-            updateDisplay()
         }
         else if(globalTag == 4){
             globalTag = 3
-            currentAnimalPicture.image = animalImages[globalTag]
-            currentAnimal = currentBunny
-            PetView.backgroundColor = .orange
-            happinessBar.color = .orange
-            foodBar.color = .orange
-            updateDisplay()
         }
         else if(globalTag == 0){
             globalTag = 4
-            currentAnimalPicture.image = animalImages[globalTag]
-            currentAnimal = currentFish
-            PetView.backgroundColor = .purple
-            happinessBar.color = .purple
-            foodBar.color = .purple
-            updateDisplay()
         }
+        arrayButtons(globalTag)
+        updateDisplay()
     }
     
     @IBAction func rightArrow(_ sender: UIButton) {
         if(globalTag == 0){
             globalTag = 1
-            currentAnimalPicture.image = animalImages[globalTag]
-            currentAnimal = currentCat
-            PetView.backgroundColor = .blue
-            happinessBar.color = .blue
-            foodBar.color = .blue
-            updateDisplay()
         }
         else if(globalTag == 1){
             globalTag = 2
-            currentAnimalPicture.image = animalImages[globalTag]
-            currentAnimal = currentBird
-            PetView.backgroundColor = .yellow
-            happinessBar.color = .yellow
-            foodBar.color = .yellow
-            updateDisplay()
         }
         else if(globalTag == 2){
             globalTag = 3
-            currentAnimalPicture.image = animalImages[globalTag]
-            currentAnimal = currentBunny
-            PetView.backgroundColor = .orange
-            happinessBar.color = .orange
-            foodBar.color = .orange
-            updateDisplay()
         }
         else if(globalTag == 3){
             globalTag = 4
-            currentAnimalPicture.image = animalImages[globalTag]
-            currentAnimal = currentFish
-            PetView.backgroundColor = .purple
-            happinessBar.color = .purple
-            foodBar.color = .purple
-            updateDisplay()
         }
         else if(globalTag == 4){
             globalTag = 0
-            currentAnimalPicture.image = animalImages[globalTag]
-            currentAnimal = currentDog
-            PetView.backgroundColor = .red
-            happinessBar.color = .red
-            foodBar.color = .red
-            updateDisplay()
         }
+        arrayButtons(globalTag)
+        updateDisplay()
     }
 }
