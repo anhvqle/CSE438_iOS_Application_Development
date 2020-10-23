@@ -18,6 +18,68 @@
             endingLineNumber = "11"
             landmarkName = "unknown"
             landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "3A4CC9F6-DBC3-4312-A66D-51C3BA439F91 - 3adfb1655f1c79c6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AnhLe_Studio1.AppDelegate.__deallocating_deinit"
+                  moduleName = "AnhLe-Studio1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/anhle/Desktop/WashU%20CS/Mobile%20Game/AnhLe-Studio1/AnhLe-Studio1/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "3A4CC9F6-DBC3-4312-A66D-51C3BA439F91 - c0469d67737d1509"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AnhLe_Studio1.AppDelegate.__allocating_init() -&gt; AnhLe_Studio1.AppDelegate"
+                  moduleName = "AnhLe-Studio1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/anhle/Desktop/WashU%20CS/Mobile%20Game/AnhLe-Studio1/AnhLe-Studio1/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  uuid = "3A4CC9F6-DBC3-4312-A66D-51C3BA439F91 - 84e923ecbd7e7351"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AnhLe_Studio1.AppDelegate.init() -&gt; AnhLe_Studio1.AppDelegate"
+                  moduleName = "AnhLe-Studio1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/anhle/Desktop/WashU%20CS/Mobile%20Game/AnhLe-Studio1/AnhLe-Studio1/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "93">
+               </Location>
+               <Location
+                  uuid = "3A4CC9F6-DBC3-4312-A66D-51C3BA439F91 - fe7b0f6d9fe2fe7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "main"
+                  moduleName = "AnhLe-Studio1"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/anhle/Desktop/WashU%20CS/Mobile%20Game/AnhLe-Studio1/AnhLe-Studio1/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "15">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
