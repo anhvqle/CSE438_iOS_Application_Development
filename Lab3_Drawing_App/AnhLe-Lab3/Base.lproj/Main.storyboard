@@ -129,7 +129,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Clear"/>
                                         <connections>
-                                            <action selector="clearScreen:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ime-20-lty"/>
+                                            <action selector="clearScreen:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KJU-R4-gbd"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tOa-hi-BTe">
@@ -145,8 +145,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Save"/>
                                         <connections>
-                                            <action selector="clearScreen:" destination="BYZ-38-t0r" eventType="touchUpInside" id="waj-bp-b5C"/>
-                                            <action selector="screenshot:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hMM-P2-RcM"/>
+                                            <action selector="screenshot:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3OG-uC-fgP"/>
                                         </connections>
                                     </button>
                                 </subviews>

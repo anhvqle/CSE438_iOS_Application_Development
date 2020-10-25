@@ -72,12 +72,15 @@ class ViewController: UIViewController {
     
     // button to save the drawing
     @IBAction func screenshot(_ sender: Any) {
-        UIGraphicsBeginImageContext(lineCanvas.bounds.size)
-        lineCanvas.layer.render(in: UIGraphicsGetCurrentContext()!)
+        UIGraphicsBeginImageContext(drawingView.bounds.size)
+        drawingView.layer.render(in: UIGraphicsGetCurrentContext()!)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)
         
+        let alert = UIAlertController(title: "Saved Successful", message: "Your drawing is saved to the Photos App", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     
