@@ -15,9 +15,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qZp-g3-aHn" userLabel="ButtonView">
-                                <rect key="frame" x="23" y="738" width="328" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qZp-g3-aHn" userLabel="ButtonView">
+                                <rect key="frame" x="23" y="738" width="329" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGs-Vu-sak">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -113,11 +112,6 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s9b-du-7Kn" userLabel="DrawingView">
-                                <rect key="frame" x="0.0" y="88" width="375" height="649"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="XZZ-df-Abc" userLabel="NavigationView">
                                 <rect key="frame" x="16" y="44" width="343" height="36"/>
                                 <subviews>
@@ -157,39 +151,97 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="lfn-eH-bEY">
+                                <rect key="frame" x="15.666666666666657" y="671" width="344" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gDn-Ox-DCD" userLabel="DuckButton">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="409-mN-ncE"/>
+                                            <constraint firstAttribute="width" constant="60" id="sHg-UB-Vfw"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="duck"/>
+                                        <connections>
+                                            <action selector="coloringPic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rpc-ga-Szf"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Npk-BQ-1B0">
+                                        <rect key="frame" x="71" y="0.0" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="0MM-C6-Box"/>
+                                            <constraint firstAttribute="width" constant="60" id="7rJ-vi-8fJ"/>
+                                        </constraints>
+                                        <state key="normal" title="CatButton" image="cat"/>
+                                        <connections>
+                                            <action selector="coloringPic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RHB-oW-pO2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RR5-mq-AeD" userLabel="PigButton">
+                                        <rect key="frame" x="142" y="0.0" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="StE-fg-u2C"/>
+                                            <constraint firstAttribute="width" constant="60" id="oQi-9k-4nS"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="pig"/>
+                                        <connections>
+                                            <action selector="coloringPic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Slj-na-4dh"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZxB-sD-hgp" userLabel="FlowerButton">
+                                        <rect key="frame" x="213" y="0.0" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="Zyb-dE-fGj"/>
+                                            <constraint firstAttribute="height" constant="60" id="rTj-vy-ucq"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="flower"/>
+                                        <connections>
+                                            <action selector="coloringPic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RjN-Wp-7ff"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PQA-U0-zKW" userLabel="NoneButton">
+                                        <rect key="frame" x="284" y="0.0" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="EaE-pN-os1"/>
+                                            <constraint firstAttribute="height" constant="60" id="In1-oX-iHI"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="nosign"/>
+                                        <connections>
+                                            <action selector="coloringPic:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Vo-es-7xY"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s9b-du-7Kn" userLabel="DrawingView">
+                                <rect key="frame" x="0.0" y="88" width="375" height="575"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mFb-LO-mYL">
+                                        <rect key="frame" x="38" y="72" width="298" height="430"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="s9b-du-7Kn" firstAttribute="top" secondItem="XZZ-df-Abc" secondAttribute="bottom" constant="8" id="3An-H3-N0v"/>
+                            <constraint firstItem="s9b-du-7Kn" firstAttribute="centerX" secondItem="XZZ-df-Abc" secondAttribute="centerX" id="3ev-Hd-9v8"/>
+                            <constraint firstItem="qZp-g3-aHn" firstAttribute="top" secondItem="lfn-eH-bEY" secondAttribute="bottom" constant="7" id="4E6-lH-d6C"/>
+                            <constraint firstItem="s9b-du-7Kn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5cL-1p-JVR"/>
                             <constraint firstItem="XZZ-df-Abc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6tV-l9-kbc"/>
+                            <constraint firstAttribute="bottom" secondItem="s9b-du-7Kn" secondAttribute="bottom" constant="149" id="Aii-6z-yAL"/>
+                            <constraint firstItem="qZp-g3-aHn" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="CNz-Ni-rFj"/>
                             <constraint firstItem="XZZ-df-Abc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="anT-X6-hpD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XZZ-df-Abc" secondAttribute="trailing" constant="16" id="eEK-YX-hE8"/>
+                            <constraint firstItem="qZp-g3-aHn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="23" id="kg9-73-PLP"/>
+                            <constraint firstItem="s9b-du-7Kn" firstAttribute="centerX" secondItem="qZp-g3-aHn" secondAttribute="centerX" id="mbc-HU-oGg"/>
+                            <constraint firstItem="lfn-eH-bEY" firstAttribute="top" secondItem="s9b-du-7Kn" secondAttribute="bottom" constant="8" id="wrr-KW-vOf"/>
+                            <constraint firstItem="s9b-du-7Kn" firstAttribute="centerX" secondItem="lfn-eH-bEY" secondAttribute="centerX" id="ww2-kg-0sN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="FjP-bd-gmW">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="S0Q-IN-RVw">
-                            <slider key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="zky-ed-d23">
-                                <rect key="frame" x="16" y="5" width="150" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </slider>
-                            <connections>
-                                <action selector="sliderMoved:" destination="BYZ-38-t0r" id="e0Y-f1-5zA"/>
-                            </connections>
-                        </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem title="Undo" id="z8d-m1-wTQ">
-                                <connections>
-                                    <action selector="undoLine:" destination="BYZ-38-t0r" id="LPx-oS-U9R"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Clear" id="7mE-7e-spO">
-                                <connections>
-                                    <action selector="clearScreen:" destination="BYZ-38-t0r" id="vTd-Cm-Iol"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
-                    </navigationItem>
                     <connections>
+                        <outlet property="ColoringImage" destination="mFb-LO-mYL" id="na7-3f-MhN"/>
                         <outlet property="drawingView" destination="s9b-du-7Kn" id="hKh-M2-c2g"/>
                         <outlet property="slider" destination="eMK-6b-edC" id="IOq-a2-gRZ"/>
                     </connections>
@@ -199,4 +251,11 @@
             <point key="canvasLocation" x="1047.2" y="137.4384236453202"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cat" width="1539" height="1844"/>
+        <image name="duck" width="612" height="652"/>
+        <image name="flower" width="700" height="903"/>
+        <image name="nosign" width="512" height="512"/>
+        <image name="pig" width="570" height="599"/>
+    </resources>
 </document>

@@ -15,11 +15,16 @@ class ViewController: UIViewController {
     var currentColor = UIColor.red
     var thickness = CGFloat(25)
     @IBOutlet weak var slider: UISlider!
-    
+    //Coloring Image
+    @IBOutlet weak var ColoringImage: UIImageView!
     //Drawing Space
     @IBOutlet weak var drawingView: UIView!
     
     var colors: [UIColor] = [.red, .orange, .yellow, .green, .blue, .purple, UIColor(red: 0.9686, green: 0.5882, blue: 0.9686, alpha: 1.0)]
+    let coloringPictures = [UIImage(named: "duck"),
+                            UIImage(named: "cat"),
+                            UIImage(named: "pig"),
+                            UIImage(named: "flower")]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +41,7 @@ class ViewController: UIViewController {
     
     // button to clear the content of the screen
     @IBAction func clearScreen(_ sender: Any) {
+        ColoringImage.image = nil
         lineCanvas.theLine = nil
         lineCanvas.lines = []
     }
@@ -44,23 +50,34 @@ class ViewController: UIViewController {
     @IBAction func undoLine(_ sender: Any) {
         if(!lineCanvas.lines.isEmpty){
             lineCanvas.theLine = nil
-            lineCanvas.lines.remove(at: lineCanvas.lines.count - 1)
+            lineCanvas.lines.removeLast()
         }
     }
     
+    // Select coloring pictures
+    @IBAction func coloringPic(_ sender: UIButton) {
+        if(sender.tag == 4){
+            ColoringImage.image = nil
+        }
+        else{
+            ColoringImage.image = coloringPictures[sender.tag]
+        }
+    }
+    
+    
     // button to change color of the line
     @IBAction func changeColor(_ sender: UIButton) {
-        //currentLine?.color = colors[sender.tag]
         currentColor = colors[sender.tag]
     }
     
     // button to save the drawing
     @IBAction func screenshot(_ sender: Any) {
-        UIGraphicsBeginImageContext(lineCanvas.frame.size)
+        UIGraphicsBeginImageContext(lineCanvas.bounds.size)
         lineCanvas.layer.render(in: UIGraphicsGetCurrentContext()!)
-        let screenShotImage = UIGraphicsGetImageFromCurrentImageContext()
+        let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        UIImageWriteToSavedPhotosAlbum(screenShotImage!, nil, nil, nil)
+        UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)
+        
     }
     
     
