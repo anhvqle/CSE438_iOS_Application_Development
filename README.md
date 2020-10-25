@@ -1,15 +1,14 @@
 # Lab 1. Simple Shopping Calculator #
 
-![](demo/Lab1-Demo.png)
+<img src="demo/Lab1-Demo.png" width="200">
 
 
 # Lab 2. Virutal Pet App #
 
-![](demo/bunny.png)
-
-![](demo/parrot.png)
+<img src="demo/bunny.png" width="500">
+<img src="demo/parrot.png" width="200">
 
 
 # Lab 3. Drawing App #
 
-![](demo/hello.png) ![](demo/hello_kitty.png)
+<img src="demo/hello.png" width="200"> <img src="demo/hello_kitty.png" width="200">
