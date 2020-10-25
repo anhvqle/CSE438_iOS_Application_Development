@@ -5,7 +5,7 @@
 
 # Lab 2. Virutal Pet App #
 
-<img src="demo/bunny.png" width="250">
+<img src="demo/bunny.png" width="500">
 <img src="demo/parrot.png" width="250">
 
 
