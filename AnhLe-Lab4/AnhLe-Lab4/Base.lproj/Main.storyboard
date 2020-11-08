@@ -65,7 +65,7 @@
         <scene sceneID="VyO-Tm-Lb4">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cph-uW-BXo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Movies" selectedImage="film.fill" catalog="system" id="hui-LU-64Z"/>
+                    <tabBarItem key="tabBarItem" title="Movies" image="film.fill" catalog="system" selectedImage="film" id="hui-LU-64Z"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OnY-Ht-7DW">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -99,10 +99,10 @@
             </objects>
             <point key="canvasLocation" x="138.40000000000001" y="138.91625615763547"/>
         </scene>
-        <!--View Controller-->
+        <!--Favorite View Controller-->
         <scene sceneID="eJ6-Ty-l4L">
             <objects>
-                <viewController id="C8I-57-80W" sceneMemberID="viewController">
+                <viewController id="C8I-57-80W" customClass="FavoriteViewController" customModule="AnhLe_Lab4" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dIH-B9-39M">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -117,6 +117,9 @@
                         <viewLayoutGuide key="safeArea" id="lof-zq-dGC"/>
                     </view>
                     <navigationItem key="navigationItem" id="rcg-32-ld6"/>
+                    <connections>
+                        <outlet property="favoriteTableView" destination="Ob6-Tg-a2L" id="1CL-aV-RC2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A7r-5B-lMv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -143,6 +146,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="film" catalog="system" width="128" height="93"/>
         <image name="film.fill" catalog="system" width="128" height="93"/>
     </resources>
 </document>

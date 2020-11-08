@@ -77,6 +77,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let detailedVC = DetailedViewController()
         let index = indexPath.section*3 + indexPath.row
         detailedVC.image = theImageCache[index]
+        detailedVC.movieID = movies[index].id
         detailedVC.titleName = movies[index].title
         detailedVC.releasedDate = movies[index].release_date
         detailedVC.score = movies[index].vote_average
@@ -85,14 +86,28 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath)
-        let movieFrame = collectionView.frame
+//        let movieFrame = collectionView.frame
         let index = indexPath.section*3 + indexPath.row
         if(index < theImageCache.count){
+            let detailView = UIView(frame: collectionView.frame)
+            cell.backgroundView = detailView
+            
             let imageView = UIImageView(image: theImageCache[index])
-            imageView.frame = movieFrame
-            cell.backgroundView = imageView
+            imageView.frame = CGRect(x: detailView.frame.minX, y: detailView.frame.minY, width: detailView.frame.width, height: detailView.frame.height)//detailView.frame
+            detailView.addSubview(imageView)
+            
+            let textView = UITextView(frame: CGRect(x: detailView.frame.minX, y: detailView.frame.minY + imageView.frame.height-50, width:  detailView.frame.width, height: 50))
+            textView.text = movies[index].title
+            textView.textColor = .white
+            textView.textAlignment = .center
+            textView.backgroundColor = UIColor.withAlphaComponent(.darkGray)(0.8)
+            imageView.addSubview(textView)
+            return cell
         }
-        return cell
+        else{
+            return nil
+        }
+        
     }
 
     func setupCollectionView(){
@@ -110,11 +125,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             let data = try! Data(contentsOf: url!)
             let theData = try! JSONDecoder().decode(APIResults.self, from: data)
             movies = theData.results
-            if(movies.count == 0){
-                let alert = UIAlertController(title: "No Results Found", message: "Cannot find any movie with title\(searchName)", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            }
             print(jsonURL)
         }
     }
