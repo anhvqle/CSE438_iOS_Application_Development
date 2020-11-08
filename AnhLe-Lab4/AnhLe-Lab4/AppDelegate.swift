@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  AnhLe-Lab3
+//  AnhLe-Lab4
 //
-//  Created by Anh Le on 10/23/20.
+//  Created by Anh Le on 11/8/20.
 //  Copyright © 2020 Anh Le. All rights reserved.
 //
 
@@ -32,21 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
-    //optional func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem,completionHandler: @escaping (Bool) -> Void)
-    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void){
-        print("quoc chim")
-        if shortcutItem.type == "depauw.AnhLe-Lab3.color-flower" {
-            print("flower")
-        }
-        else if shortcutItem.type == "depauw.AnhLe-Lab3.color-hello-kitty" {
-            print("hello kitty")
-        }
-        else if shortcutItem.type == "depauw.AnhLe-Lab3.color-pig" {
-            print("pig")
-        }
-        else if shortcutItem.type == "depauw.AnhLe-Lab3.color-duck" {
-            print("duck")
-        }
-    }
+
 }
 

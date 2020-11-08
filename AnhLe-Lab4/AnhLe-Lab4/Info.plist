@@ -2,43 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIApplicationShortcutItems</key>
-	<array>
-		<dict>
-			<key>UIApplicationShortcutItemType</key>
-			<string>depauw.AnhLe-Lab3.color-flower</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Color Flower</string>
-			<key>UIApplicationShortcutItemIconFile</key>
-			<string>UIApplicationShortcutIconTypeCompose</string>
-		</dict>
-		<dict>
-			<key>UIApplicationShortcutItemType</key>
-			<string>depauw.AnhLe-Lab3.color-hello-kitty</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Color Hello Kitty</string>
-			<key>UIApplicationShortcutItemIconFile</key>
-			<string>UIApplicationShortcutIconTypeCompose</string>
-		</dict>
-		<dict>
-			<key>UIApplicationShortcutItemIconFile</key>
-			<string>UIApplicationShortcutIconTypeCompose</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Color Pig</string>
-			<key>UIApplicationShortcutItemType</key>
-			<string>depauw.AnhLe-Lab3.color-pig</string>
-		</dict>
-		<dict>
-			<key>UIApplicationShortcutItemType</key>
-			<string>depauw.AnhLe-Lab3.color-duck</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Color Duck</string>
-			<key>UIApplicationShortcutItemIconFile</key>
-			<string>UIApplicationShortcutIconTypeCompose</string>
-		</dict>
-	</array>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Allows the application to write photos to save screenshots</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
