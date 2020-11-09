@@ -39,7 +39,18 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let database = UserDefaults.standard.string(forKey: "MyKey")
+        UserDefaults.standard.array(forKey: "MyName")
+        UserDefaults.standard.array(forKey: "MyID")
+        UserDefaults.standard.array(forKey: "MyImagePath")
+        UserDefaults.standard.array(forKey: "MyDate")
+        UserDefaults.standard.array(forKey: "MyScore")
+        
+        UserDefaults.standard.set([],forKey: "MyName")
+        UserDefaults.standard.set([],forKey: "MyID")
+        UserDefaults.standard.set([],forKey: "MyImagePath")
+        UserDefaults.standard.set([],forKey: "MyDate")
+        UserDefaults.standard.set([],forKey: "MyScore")
+        
         let itemSize = UIScreen.main.bounds.width / 3 - 10
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
@@ -124,13 +135,18 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func fetchDataForCollectionView(_ searchName: String){
         if(searchName != ""){
-            let searchMovieName = searchName.replacingOccurrences(of: " ", with: "+")
-            let jsonURL = "https://api.themoviedb.org/3/search/movie?api_key=4e696d8d8239e7c1b97bcd76ac0eb317&query=\(searchMovieName)"
-            let url = URL(string: jsonURL)
-            let data = try! Data(contentsOf: url!)
-            let theData = try! JSONDecoder().decode(APIResults.self, from: data)
-            movies = theData.results
-            print(jsonURL)
+            do {
+                let searchMovieName = searchName.replacingOccurrences(of: " ", with: "+")
+                let jsonURL = "https://api.themoviedb.org/3/search/movie?api_key=4e696d8d8239e7c1b97bcd76ac0eb317&query=\(searchMovieName)"
+                let url = URL(string: jsonURL)
+                let data = try Data(contentsOf: url!)
+                let theData = try JSONDecoder().decode(APIResults.self, from: data)
+                movies = theData.results
+                print(jsonURL)
+            }
+            catch {
+                movies = []
+            }
         }
     }
     

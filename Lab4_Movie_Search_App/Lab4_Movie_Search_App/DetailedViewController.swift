@@ -13,12 +13,15 @@ class DetailedViewController: UIViewController {
     var image: UIImage!
     var movieID: Int!
     var poster_path: String!
-    var overview: String!
-    var vote_count: Int!
     var titleName: String!
     var releasedDate: String!
     var score: Double!
-    var favoriteMovies: [String] = []
+    
+    var favoriteNames: [String] = []
+    var favoriteIDs: [Int] = []
+    var favoriteDates: [String] = []
+    var favoriteScores: [Double] = []
+    //var favoriteImages: [UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,11 +70,25 @@ class DetailedViewController: UIViewController {
     
     // Add to Favorite List Button
     @objc func addFavorite(sender: UIButton!) {
-        self.favoriteMovies = UserDefaults.standard.array(forKey: "MyKey") as? [String] ?? []
-        if( !self.favoriteMovies.contains(self.titleName!) ){
-            self.favoriteMovies.append(self.titleName!)
-            UserDefaults.standard.set(self.favoriteMovies, forKey: "MyKey")
-            print(self.favoriteMovies)
+        self.favoriteNames = UserDefaults.standard.array(forKey: "MyName") as? [String] ?? []
+        self.favoriteIDs = UserDefaults.standard.array(forKey: "MyID") as? [Int] ?? []
+        self.favoriteDates = UserDefaults.standard.array(forKey: "MyDate") as? [String] ?? []
+        self.favoriteScores = UserDefaults.standard.array(forKey: "MyScore") as? [Double] ?? []
+        //self.favoriteImages = UserDefaults.standard.array(forKey: "MyImagePath") as? [UIImage] ?? []
+        if( !self.favoriteIDs.contains(self.movieID!) ){
+            self.favoriteNames.append(self.titleName!)
+            self.favoriteIDs.append(self.movieID!)
+            self.favoriteDates.append(self.releasedDate!)
+            self.favoriteScores.append(self.score!)
+            //self.favoriteImages.append(self.image!)
+            
+            UserDefaults.standard.set(self.favoriteNames, forKey: "MyName")
+            UserDefaults.standard.set(self.favoriteIDs, forKey: "MyID")
+            UserDefaults.standard.set(self.favoriteDates, forKey: "MyDate")
+            UserDefaults.standard.set(self.favoriteScores, forKey: "MyScore")
+            //UserDefaults.standard.set(self.favoriteImages, forKey: "MyImagePath")
+            
+            print(self.favoriteNames)
         }
         
         let alert = UIAlertController(title: "Saved", message: "Added to Favorites", preferredStyle: UIAlertController.Style.alert)
