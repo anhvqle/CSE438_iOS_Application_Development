@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  AnhLe-Lab4
+//  Lab4_Movie_Search_App
 //
-//  Created by Anh Le on 11/8/20.
+//  Created by Anh Le on 11/9/20.
 //  Copyright © 2020 Anh Le. All rights reserved.
 //
 
@@ -31,5 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
+
+
 }
 
