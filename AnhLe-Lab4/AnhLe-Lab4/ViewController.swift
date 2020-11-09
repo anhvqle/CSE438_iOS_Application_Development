@@ -45,7 +45,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        let database = UserDefaults.standard.string(forKey: "MyKey")
         let itemSize = UIScreen.main.bounds.width / 3 - 10
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
@@ -104,9 +104,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             imageView.addSubview(textView)
             return cell
         }
-        else{
-            return nil
-        }
+        return cell
         
     }
 

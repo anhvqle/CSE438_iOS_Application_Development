@@ -18,6 +18,7 @@ class DetailedViewController: UIViewController {
     var titleName: String!
     var releasedDate: String!
     var score: Double!
+    var favoriteMovies: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,28 +59,16 @@ class DetailedViewController: UIViewController {
     
 
     @objc func addFavorite(sender: UIButton!) {
-        let thePath = Bundle.main.path(forResource: "favorite", ofType: "db")
-        let contactDB = FMDatabase(path: thePath)
-        if !(contactDB.open()){
-            print("Unable to open database")
-            return
-            
-        } else {
-            do {
-                //try contactDB.executeQuery("insert into favorite (ID, POSTER_PATH, TITLE, RELEASE_DATE, VOTE_AVERAGE, OVERVIEW, VOTE_COUNT) values (?, ?, ?, ?, ?, ?, ?", values: [id!, poster_path!, titleName!, releasedDate!, score!, overview!, vote_count!])
-                print(movieID!)
-                print(titleName!)
-                try contactDB.executeQuery("insert into favoriteMovie (ID, TITLE)  values (?, ?)", values: [movieID!, titleName!])
-            } catch let error as NSError {
-                print("failed \(error)")
-            }
+        self.favoriteMovies = UserDefaults.standard.array(forKey: "MyKey") as? [String] ?? []
+        if( !self.favoriteMovies.contains(self.titleName!) ){
+            self.favoriteMovies.append(self.titleName!)
+            UserDefaults.standard.set(self.favoriteMovies, forKey: "MyKey")
+            print(self.favoriteMovies)
         }
         
         let alert = UIAlertController(title: "Saved", message: "Added to Favorites", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
-        contactDB.close()
-        print("Button tapped")
     }
 
     /*

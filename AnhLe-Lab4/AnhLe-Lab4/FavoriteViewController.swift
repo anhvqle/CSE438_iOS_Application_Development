@@ -13,7 +13,12 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
         let id: Int!
         let title: String
     }
-    var favoriteArr:[Movie] = []
+    var favoriteMovies: [String] = UserDefaults.standard.array(forKey: "MyKey")! as? [String] ?? []{
+        didSet{
+            favoriteTableView.reloadData();
+        }
+    }
+    
     @IBOutlet weak var favoriteTableView: UITableView!
     
     override func viewDidLoad() {
@@ -21,43 +26,32 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
         // Do any additional setup after loading the view.
         favoriteTableView.dataSource = self
         favoriteTableView.delegate = self
-        loadDatabase()
+        favoriteTableView.register(UITableViewCell.self, forCellReuseIdentifier: "favoriteCell")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return favoriteArr.count
+        return self.favoriteMovies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let myCell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        myCell.textLabel!.text = favoriteArr[indexPath.row].title
+        let myCell = UITableViewCell(style: .default, reuseIdentifier: "favoriteCell")
+        myCell.textLabel!.text = self.favoriteMovies[indexPath.row]
         return myCell
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        
-//    }
-    
-    func loadDatabase() {
-        let thePath = Bundle.main.path(forResource: "favorite", ofType: "db")
-        let contactDB = FMDatabase(path: thePath)
-        if !(contactDB.open()){
-            print("Unable to open database")
-            return
-            
-        } else {
-            do {
-                let results = try contactDB.executeQuery("select * from favoriteMovie", values: nil)
-                while(results.next()){
-                    let movie = Movie(id: Int(results.int(forColumn: "ID")), title: results.string(forColumn: "TITLE")!)
-                    favoriteArr.append(movie)
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if(editingStyle == .delete){
+            let title = tableView.cellForRow(at: indexPath)?.textLabel!.text
+            for i in 0...self.favoriteMovies.count{
+                if(self.favoriteMovies[i] == title){
+                    self.favoriteMovies.remove(at: i)
+                    UserDefaults.standard.set(self.favoriteMovies, forKey: "MyKey")
+                    break
                 }
-            } catch let error as NSError {
-                print("failed \(error)")
             }
         }
     }
-    
+        
 
     /*
     // MARK: - Navigation
