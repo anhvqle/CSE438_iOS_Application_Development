@@ -37,6 +37,7 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     @IBOutlet weak var favoriteTableView: UITableView!
+    @IBOutlet weak var clearButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -144,6 +145,25 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
         detailedVC.releasedDate = favoriteDates[index]
         detailedVC.score = favoriteScores[index]
         navigationController?.pushViewController(detailedVC, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        true
+    }
+    
+    @IBAction func clearFavorites(_ sender: Any) {
+        self.favoriteNames = []
+        self.favoriteIDs = []
+        self.favoriteDates = []
+        self.favoriteScores = []
+        self.favoritePaths = []
+        favoriteTableView.reloadData()
+        
+        UserDefaults.standard.set([], forKey: "MyName")
+        UserDefaults.standard.set([], forKey: "MyID")
+        UserDefaults.standard.set([], forKey: "MyDate")
+        UserDefaults.standard.set([], forKey: "MyScore")
+        UserDefaults.standard.set([], forKey: "MyImageString")
     }
     
     /*

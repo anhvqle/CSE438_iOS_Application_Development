@@ -139,8 +139,15 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="dnK-kc-USj"/>
                     </view>
-                    <navigationItem key="navigationItem" id="GXh-br-ohb"/>
+                    <navigationItem key="navigationItem" id="GXh-br-ohb">
+                        <barButtonItem key="rightBarButtonItem" title="Clear" id="a3D-nK-8H6">
+                            <connections>
+                                <action selector="clearFavorites:" destination="lc1-KI-vKS" id="owu-LQ-67x"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="clearButton" destination="a3D-nK-8H6" id="6gx-uo-Ipl"/>
                         <outlet property="favoriteTableView" destination="wFf-Wr-NTi" id="T4T-D9-gXo"/>
                     </connections>
                 </viewController>

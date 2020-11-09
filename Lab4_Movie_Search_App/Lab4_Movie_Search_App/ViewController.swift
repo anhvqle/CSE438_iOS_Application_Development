@@ -42,7 +42,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         // Do any additional setup after loading the view.
         UserDefaults.standard.array(forKey: "MyName")
         UserDefaults.standard.array(forKey: "MyID")
-        UserDefaults.standard.array(forKey: "MyImagePath")
         UserDefaults.standard.array(forKey: "MyDate")
         UserDefaults.standard.array(forKey: "MyScore")
         UserDefaults.standard.array(forKey: "MyImageString")
