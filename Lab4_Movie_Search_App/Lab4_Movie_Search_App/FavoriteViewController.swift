@@ -9,7 +9,7 @@
 import UIKit
 
 class FavoriteViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    var theImageCache: [UIImage] = []
+    
     var favoriteNames:[String]!{
         didSet{
             favoriteTableView.reloadData()
@@ -33,7 +33,6 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
     var favoritePaths:[String]!{
         didSet{
             favoriteTableView.reloadData()
-            cacheImages()
         }
     }
     
@@ -118,9 +117,6 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
                     self.favoritePaths.remove(at: i)
                     UserDefaults.standard.set(self.favoritePaths, forKey: "MyImageString")
                     self.favoritePaths = UserDefaults.standard.array(forKey: "MyImageString")! as? [String]
-                    
-                    //Remove imageCache
-                    self.theImageCache.remove(at: i)
                     break
                 }
             }
@@ -128,30 +124,26 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailedVC = DetailedViewController()
+        
         let index = indexPath.section*3 + indexPath.row
-        detailedVC.image = theImageCache[index]
+        let detailedVC = DetailedViewController()
+        
+        let imageURL = "https://image.tmdb.org/t/p/w185" + favoritePaths[index]
+        let url = URL(string: imageURL)
+        let data = try? Data(contentsOf: url!)
+        if(data != nil){
+            let image = UIImage(data: data!)
+            detailedVC.image = image
+        }
+        else{
+            detailedVC.image = UIImage(named: "notfound.png")!
+        }
+        
         detailedVC.movieID = favoriteIDs[index]
         detailedVC.titleName = favoriteNames[index]
         detailedVC.releasedDate = favoriteDates[index]
         detailedVC.score = favoriteScores[index]
         navigationController?.pushViewController(detailedVC, animated: true)
-    }
-        
-    func cacheImages(){
-        let baseURL = "https://image.tmdb.org/t/p/w185"
-        for path in favoritePaths {
-            let imageURL = baseURL + path
-            let url = URL(string: imageURL)
-            let data = try? Data(contentsOf: url!)
-            if(data != nil){
-                let image = UIImage(data: data!)
-                theImageCache.append(image!)
-            }
-            else{
-                theImageCache.append(UIImage(named: "notfound.png")!)
-            }
-        }
     }
     
     /*

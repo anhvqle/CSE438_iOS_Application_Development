@@ -5,6 +5,7 @@
 //  Created by Anh Le on 11/8/20.
 //  Copyright © 2020 Anh Le. All rights reserved.
 //
+// https://api.themoviedb.org/3/discover/movie?api_key=4e696d8d8239e7c1b97bcd76ac0eb317&sort_by=popularity.desc&vote_count.gte=10000
 
 import UIKit
 
@@ -46,13 +47,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         UserDefaults.standard.array(forKey: "MyScore")
         UserDefaults.standard.array(forKey: "MyImageString")
         
-        UserDefaults.standard.set([],forKey: "MyName")
-        UserDefaults.standard.set([],forKey: "MyID")
-        UserDefaults.standard.set([],forKey: "MyImagePath")
-        UserDefaults.standard.set([],forKey: "MyDate")
-        UserDefaults.standard.set([],forKey: "MyScore")
-        UserDefaults.standard.set([],forKey: "MyImageString")
-        
         let itemSize = UIScreen.main.bounds.width / 3 - 10
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
@@ -61,8 +55,15 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         layout.minimumLineSpacing = 5
         movieCollectionView.collectionViewLayout = layout
         
-        searchBar.delegate = self
         setupCollectionView()
+        let jsonURL = "https://api.themoviedb.org/3/discover/movie?api_key=4e696d8d8239e7c1b97bcd76ac0eb317&sort_by=popularity.desc&sort_by=vote_count.desc"
+        let url = URL(string: jsonURL)
+        let data = try! Data(contentsOf: url!)
+        let theData = try! JSONDecoder().decode(APIResults.self, from: data)
+        movies = theData.results
+        cacheImages()
+        
+        searchBar.delegate = self
         spinner.isHidden = true
     }
     
@@ -106,7 +107,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath)
-//        let movieFrame = collectionView.frame
         let index = indexPath.section*3 + indexPath.row
         if(index < movies.count){
             let detailView = UIView(frame: collectionView.frame)

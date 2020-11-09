@@ -65,7 +65,7 @@
         <scene sceneID="Ceg-ZT-uBr">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1VF-LQ-QiX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Movies" image="film.fill" catalog="system" id="Lrw-wG-ItD"/>
+                    <tabBarItem key="tabBarItem" title="Movies" image="movie" id="Lrw-wG-ItD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VDy-jx-kSg">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -171,7 +171,7 @@
         <scene sceneID="g6g-ag-AKz">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vyd-hy-8zP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="About" image="exclamationmark.circle" catalog="system" id="hJc-vZ-MT1"/>
+                    <tabBarItem key="tabBarItem" title="About" image="about" id="hJc-vZ-MT1"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CUl-Sd-vf7">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -189,7 +189,7 @@
     </scenes>
     <resources>
         <image name="TMDB" width="1166" height="858"/>
-        <image name="exclamationmark.circle" catalog="system" width="128" height="121"/>
-        <image name="film.fill" catalog="system" width="128" height="93"/>
+        <image name="about" width="30" height="30"/>
+        <image name="movie" width="30" height="30"/>
     </resources>
 </document>
