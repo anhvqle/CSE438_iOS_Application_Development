@@ -11,16 +11,22 @@ import UIKit
 class FavoriteViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     struct Movie: Decodable {
         let id: Int!
+        let poster_path: String?
         let title: String
+        let release_date: String
+        let vote_average: Double
+        let overview: String
+        let vote_count:Int!
     }
     var favoriteMovies:[String] = UserDefaults.standard.array(forKey: "MyKey")! as! [String]{
         didSet{
             favoriteTableView.reloadData()
         }
     }
+    
 
     @IBOutlet weak var favoriteTableView: UITableView!
-    
+    var movies: [Movie] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +63,17 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
             }
         }
     }
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let detailedVC = DetailedViewController()
+//        let index = indexPath.section*3 + indexPath.row
+////        detailedVC.image = theImageCache[index]
+////        detailedVC.movieID = movies[index].id
+////        detailedVC.titleName = movies[index].title
+////        detailedVC.releasedDate = movies[index].release_date
+////        detailedVC.score = movies[index].vote_average
+//        navigationController?.pushViewController(detailedVC, animated: true)
+//    }
         
 
     /*

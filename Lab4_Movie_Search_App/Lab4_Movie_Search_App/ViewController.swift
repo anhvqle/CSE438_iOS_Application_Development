@@ -28,19 +28,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     var movies: [Movie] = []
-    var movieSearchName: String = "" {
-        didSet{
-            movies = []
-            theImageCache = []
-            setupCollectionView()
-            fetchDataForCollectionView(movieSearchName)
-            cacheImages()
-        }
-    }
     var theImageCache: [UIImage] = []
-        
+    var movieSearchName: String = ""
+    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var movieCollectionView: UICollectionView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,21 +50,33 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         searchBar.delegate = self
         setupCollectionView()
-        fetchDataForCollectionView("Lion King")
-        cacheImages()
+        spinner.isHidden = true
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.movies = []
+        self.theImageCache = []
+        movieCollectionView.reloadData()
+        searchBar.resignFirstResponder()
         movieSearchName = searchBar.text!
+        spinner.isHidden = false
+        spinner.startAnimating()
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.fetchDataForCollectionView(self.movieSearchName)
+            self.cacheImages()
+            DispatchQueue.main.async {
+                self.spinner.stopAnimating()
+                self.spinner.isHidden = true
+                self.movieCollectionView.reloadData()
+//                print(self.movies.count)
+//                print(self.theImageCache.count)
+            }
+        }
         print(searchBar.text!)
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 7
+        return movies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -88,7 +94,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath)
 //        let movieFrame = collectionView.frame
         let index = indexPath.section*3 + indexPath.row
-        if(index < theImageCache.count){
+        if(index < movies.count){
             let detailView = UIView(frame: collectionView.frame)
             cell.backgroundView = detailView
             
@@ -102,10 +108,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             textView.textAlignment = .center
             textView.backgroundColor = UIColor.withAlphaComponent(.darkGray)(0.8)
             imageView.addSubview(textView)
-            return cell
+        }
+        else{
+            cell.backgroundView = UIView(frame: collectionView.frame)
         }
         return cell
-        
     }
 
     func setupCollectionView(){
@@ -138,6 +145,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                     let image = UIImage(data: data!)
                     theImageCache.append(image!)
                 }
+            }
+            else{
+                theImageCache.append(UIImage(named: "notfound.png")!)
             }
         }
     }
