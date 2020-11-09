@@ -9,15 +9,6 @@
 import UIKit
 
 class FavoriteViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    struct Movie: Decodable {
-        let id: Int!
-        let poster_path: String?
-        let title: String
-        let release_date: String
-        let vote_average: Double
-        let overview: String
-        let vote_count:Int!
-    }
     var theImageCache: [UIImage] = []
     var favoriteNames:[String]!{
         didSet{
@@ -39,15 +30,14 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
             favoriteTableView.reloadData()
         }
     }
-//    var favoriteImages:[UIImage]!{
-//        didSet{
-//            favoriteTableView.reloadData()
-//        }
-//    }
+    var favoritePaths:[String]!{
+        didSet{
+            favoriteTableView.reloadData()
+            cacheImages()
+        }
+    }
     
-
     @IBOutlet weak var favoriteTableView: UITableView!
-    var movies: [Movie] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,10 +74,10 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
         if(UserDefaults.standard.array(forKey: "MyScore")! as? [Double] == nil){
             favoriteScores = []
         }
-//        self.favoriteImages = UserDefaults.standard.array(forKey: "MyImagePath")! as? [UIImage]
-//        if(UserDefaults.standard.array(forKey: "MyImagePath")! as? [UIImage] == nil){
-//            favoriteImages = []
-//        }
+        self.favoritePaths = UserDefaults.standard.array(forKey: "MyImageString")! as? [String]
+        if(UserDefaults.standard.array(forKey: "MyImageString")! as? [String] == nil){
+            favoritePaths = []
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -95,7 +85,7 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
         self.favoriteIDs = UserDefaults.standard.array(forKey: "MyID")! as? [Int]
         self.favoriteDates = UserDefaults.standard.array(forKey: "MyDate")! as? [String]
         self.favoriteScores = UserDefaults.standard.array(forKey: "MyScore")! as? [Double]
-        //self.favoriteImages = UserDefaults.standard.array(forKey: "MyImagePath")! as? [UIImage]
+        self.favoritePaths = UserDefaults.standard.array(forKey: "MyImageString")! as? [String]
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -108,22 +98,29 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
                     self.favoriteNames.remove(at: i)
                     UserDefaults.standard.set(self.favoriteNames, forKey: "MyName")
                     self.favoriteNames = UserDefaults.standard.array(forKey: "MyName")! as? [String]
+                    
                     //Remove favorite IDs
                     self.favoriteIDs.remove(at: i)
                     UserDefaults.standard.set(self.favoriteIDs, forKey: "MyID")
                     self.favoriteIDs = UserDefaults.standard.array(forKey: "MyID")! as? [Int]
+                    
                     //Remove favorite Dates
                     self.favoriteDates.remove(at: i)
                     UserDefaults.standard.set(self.favoriteDates, forKey: "MyDate")
                     self.favoriteDates = UserDefaults.standard.array(forKey: "MyDate")! as? [String]
+                    
                     //Remove favorite Scores
                     self.favoriteScores.remove(at: i)
                     UserDefaults.standard.set(self.favoriteScores, forKey: "MyScore")
                     self.favoriteScores = UserDefaults.standard.array(forKey: "MyScore")! as? [Double]
-                    //Remove favorite images
-//                    self.favoriteImages.remove(at: i)
-//                    UserDefaults.standard.set(self.favoriteImages, forKey: "MyImagePath")
-//                    self.favoriteImages = UserDefaults.standard.array(forKey: "MyImagePath")! as? [UIImage]
+
+                    //Remove favorite strings
+                    self.favoritePaths.remove(at: i)
+                    UserDefaults.standard.set(self.favoritePaths, forKey: "MyImageString")
+                    self.favoritePaths = UserDefaults.standard.array(forKey: "MyImageString")! as? [String]
+                    
+                    //Remove imageCache
+                    self.theImageCache.remove(at: i)
                     break
                 }
             }
@@ -133,7 +130,7 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailedVC = DetailedViewController()
         let index = indexPath.section*3 + indexPath.row
-        detailedVC.image = UIImage(named: "notfound.png")
+        detailedVC.image = theImageCache[index]
         detailedVC.movieID = favoriteIDs[index]
         detailedVC.titleName = favoriteNames[index]
         detailedVC.releasedDate = favoriteDates[index]
@@ -143,15 +140,13 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
         
     func cacheImages(){
         let baseURL = "https://image.tmdb.org/t/p/w185"
-        for item in movies {
-            if(item.poster_path != nil){
-                let imageURL = baseURL + item.poster_path!
-                let url = URL(string: imageURL)
-                let data = try? Data(contentsOf: url!)
-                if(data != nil){
-                    let image = UIImage(data: data!)
-                    theImageCache.append(image!)
-                }
+        for path in favoritePaths {
+            let imageURL = baseURL + path
+            let url = URL(string: imageURL)
+            let data = try? Data(contentsOf: url!)
+            if(data != nil){
+                let image = UIImage(data: data!)
+                theImageCache.append(image!)
             }
             else{
                 theImageCache.append(UIImage(named: "notfound.png")!)

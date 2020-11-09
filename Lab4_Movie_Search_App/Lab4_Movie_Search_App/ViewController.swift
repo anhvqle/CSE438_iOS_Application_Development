@@ -44,12 +44,14 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         UserDefaults.standard.array(forKey: "MyImagePath")
         UserDefaults.standard.array(forKey: "MyDate")
         UserDefaults.standard.array(forKey: "MyScore")
+        UserDefaults.standard.array(forKey: "MyImageString")
         
         UserDefaults.standard.set([],forKey: "MyName")
         UserDefaults.standard.set([],forKey: "MyID")
         UserDefaults.standard.set([],forKey: "MyImagePath")
         UserDefaults.standard.set([],forKey: "MyDate")
         UserDefaults.standard.set([],forKey: "MyScore")
+        UserDefaults.standard.set([],forKey: "MyImageString")
         
         let itemSize = UIScreen.main.bounds.width / 3 - 10
         let layout = UICollectionViewFlowLayout()
@@ -98,6 +100,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         detailedVC.titleName = movies[index].title
         detailedVC.releasedDate = movies[index].release_date
         detailedVC.score = movies[index].vote_average
+        detailedVC.poster_path = movies[index].poster_path
         navigationController?.pushViewController(detailedVC, animated: true)
     }
     

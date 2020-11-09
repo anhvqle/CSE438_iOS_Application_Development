@@ -21,7 +21,8 @@ class DetailedViewController: UIViewController {
     var favoriteIDs: [Int] = []
     var favoriteDates: [String] = []
     var favoriteScores: [Double] = []
-    //var favoriteImages: [UIImage] = []
+    var favoriteImages: [UIImage] = []
+    var favoritePaths: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,21 +75,24 @@ class DetailedViewController: UIViewController {
         self.favoriteIDs = UserDefaults.standard.array(forKey: "MyID") as? [Int] ?? []
         self.favoriteDates = UserDefaults.standard.array(forKey: "MyDate") as? [String] ?? []
         self.favoriteScores = UserDefaults.standard.array(forKey: "MyScore") as? [Double] ?? []
-        //self.favoriteImages = UserDefaults.standard.array(forKey: "MyImagePath") as? [UIImage] ?? []
+        self.favoriteImages = UserDefaults.standard.array(forKey: "MyImagePath") as? [UIImage] ?? []
+        self.favoritePaths = UserDefaults.standard.array(forKey: "MyImageString") as? [String] ?? []
         if( !self.favoriteIDs.contains(self.movieID!) ){
             self.favoriteNames.append(self.titleName!)
             self.favoriteIDs.append(self.movieID!)
             self.favoriteDates.append(self.releasedDate!)
             self.favoriteScores.append(self.score!)
-            //self.favoriteImages.append(self.image!)
+            //self.favoriteImages.append(UIImage(named: "notfound.png")!)
+            self.favoritePaths.append(self.poster_path!)
             
             UserDefaults.standard.set(self.favoriteNames, forKey: "MyName")
             UserDefaults.standard.set(self.favoriteIDs, forKey: "MyID")
             UserDefaults.standard.set(self.favoriteDates, forKey: "MyDate")
             UserDefaults.standard.set(self.favoriteScores, forKey: "MyScore")
             //UserDefaults.standard.set(self.favoriteImages, forKey: "MyImagePath")
+            UserDefaults.standard.set(self.favoritePaths, forKey: "MyImageString")
             
-            print(self.favoriteNames)
+            print(self.favoritePaths)
         }
         
         let alert = UIAlertController(title: "Saved", message: "Added to Favorites", preferredStyle: UIAlertController.Style.alert)
