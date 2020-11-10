@@ -12,3 +12,8 @@
 # Lab 3. Drawing App #
 
 <img src="demo/hello.png" width="250"> <img src="demo/hello_kitty.png" width="250">
+
+
+# Lab 3. Movie Search App #
+
+<img src="demo/home.png" width="250"> <img src="demo/deadpool.png" width="250"> <img src="demo/favorite.png" width="250">

@@ -44,7 +44,7 @@ class DetailedViewController: UIViewController {
         releaseDateView.textAlignment = .center
         view.addSubview(releaseDateView)
         
-        let scoreFrame = CGRect(x: 0, y: image.size.height + 140, width: view.frame.width, height: 30)
+        let scoreFrame = CGRect(x: 0, y: image.size.height + 130, width: view.frame.width, height: 30)
         let scoreView = UILabel(frame: scoreFrame)
         scoreView.text = "Score: \(score!*10)/100"
         scoreView.font = UIFont.boldSystemFont(ofSize: 16.0)
