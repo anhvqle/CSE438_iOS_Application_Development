@@ -43,25 +43,48 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        if (UserDefaults.standard.array(forKey: "MyName") == nil){
+            UserDefaults.standard.set([],forKey: "MyName")
+        }
         self.favoriteNames = UserDefaults.standard.array(forKey: "MyName")! as? [String]
         if(UserDefaults.standard.array(forKey: "MyName")! as? [String] == nil){
             favoriteNames = []
+        }
+        
+        if (UserDefaults.standard.array(forKey: "MyID") == nil){
+            UserDefaults.standard.set([],forKey: "MyID")
         }
         self.favoriteIDs = UserDefaults.standard.array(forKey: "MyID")! as? [Int]
         if(UserDefaults.standard.array(forKey: "MyID")! as? [Int] == nil){
             favoriteIDs = []
         }
+        
+        if (UserDefaults.standard.array(forKey: "MyDate") == nil){
+            UserDefaults.standard.set([],forKey: "MyDate")
+        }
         self.favoriteDates = UserDefaults.standard.array(forKey: "MyDate")! as? [String]
         if(UserDefaults.standard.array(forKey: "MyDate")! as? [String] == nil){
             favoriteDates = []
+        }
+        
+        if (UserDefaults.standard.array(forKey: "MyScore") == nil){
+            UserDefaults.standard.set([],forKey: "MyScore")
         }
         self.favoriteScores = UserDefaults.standard.array(forKey: "MyScore")! as? [Double]
         if(UserDefaults.standard.array(forKey: "MyScore")! as? [Double] == nil){
             favoriteScores = []
         }
+        
+        if (UserDefaults.standard.array(forKey: "MyImageString") == nil){
+            UserDefaults.standard.set([],forKey: "MyImageString")
+        }
         self.favoritePaths = UserDefaults.standard.array(forKey: "MyImageString")! as? [String]
         if(UserDefaults.standard.array(forKey: "MyImageString")! as? [String] == nil){
             favoritePaths = []
+        }
+        
+        if (UserDefaults.standard.array(forKey: "MyOverview") == nil){
+            UserDefaults.standard.set([],forKey: "MyOverview")
         }
         self.favoriteOverviews = UserDefaults.standard.array(forKey: "MyOverview")! as? [String]
         if(UserDefaults.standard.array(forKey: "MyOverview")! as? [String] == nil){
