@@ -35,6 +35,11 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
             favoriteTableView.reloadData()
         }
     }
+    var favoriteOverviews:[String]!{
+        didSet{
+            favoriteTableView.reloadData()
+        }
+    }
     
     @IBOutlet weak var favoriteTableView: UITableView!
     @IBOutlet weak var clearButton: UIBarButtonItem!
@@ -42,6 +47,7 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.title = "Favorites"
         favoriteTableView.dataSource = self
         favoriteTableView.delegate = self
         favoriteTableView.register(UITableViewCell.self, forCellReuseIdentifier: "favoriteCell")
@@ -78,6 +84,10 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
         if(UserDefaults.standard.array(forKey: "MyImageString")! as? [String] == nil){
             favoritePaths = []
         }
+        self.favoriteOverviews = UserDefaults.standard.array(forKey: "MyOverview")! as? [String]
+        if(UserDefaults.standard.array(forKey: "MyOverview")! as? [String] == nil){
+            favoriteOverviews = []
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -86,6 +96,7 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
         self.favoriteDates = UserDefaults.standard.array(forKey: "MyDate")! as? [String]
         self.favoriteScores = UserDefaults.standard.array(forKey: "MyScore")! as? [Double]
         self.favoritePaths = UserDefaults.standard.array(forKey: "MyImageString")! as? [String]
+        self.favoriteOverviews = UserDefaults.standard.array(forKey: "MyOverview")! as? [String]
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -118,6 +129,11 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
                     self.favoritePaths.remove(at: i)
                     UserDefaults.standard.set(self.favoritePaths, forKey: "MyImageString")
                     self.favoritePaths = UserDefaults.standard.array(forKey: "MyImageString")! as? [String]
+                    
+                    //Remove favorite overviews
+                    self.favoriteOverviews.remove(at: i)
+                    UserDefaults.standard.set(self.favoriteOverviews, forKey: "MyOverview")
+                    self.favoriteOverviews = UserDefaults.standard.array(forKey: "MyOverview")! as? [String]
                     break
                 }
             }
@@ -144,6 +160,8 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
         detailedVC.titleName = favoriteNames[index]
         detailedVC.releasedDate = favoriteDates[index]
         detailedVC.score = favoriteScores[index]
+        detailedVC.overview = favoriteOverviews[index]
+        
         navigationController?.pushViewController(detailedVC, animated: true)
     }
     
@@ -157,6 +175,7 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
         self.favoriteDates = []
         self.favoriteScores = []
         self.favoritePaths = []
+        self.favoriteOverviews = []
         favoriteTableView.reloadData()
         
         UserDefaults.standard.set([], forKey: "MyName")
@@ -164,6 +183,7 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
         UserDefaults.standard.set([], forKey: "MyDate")
         UserDefaults.standard.set([], forKey: "MyScore")
         UserDefaults.standard.set([], forKey: "MyImageString")
+        UserDefaults.standard.set([], forKey: "MyOverview")
     }
     
     /*

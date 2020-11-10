@@ -40,11 +40,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.title = "Movies"
         UserDefaults.standard.array(forKey: "MyName")
         UserDefaults.standard.array(forKey: "MyID")
         UserDefaults.standard.array(forKey: "MyDate")
         UserDefaults.standard.array(forKey: "MyScore")
         UserDefaults.standard.array(forKey: "MyImageString")
+        UserDefaults.standard.array(forKey: "MyOverview")
         
         let itemSize = UIScreen.main.bounds.width / 3 - 10
         let layout = UICollectionViewFlowLayout()
@@ -101,6 +103,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         detailedVC.releasedDate = movies[index].release_date
         detailedVC.score = movies[index].vote_average
         detailedVC.poster_path = movies[index].poster_path
+        detailedVC.overview = movies[index].overview
         navigationController?.pushViewController(detailedVC, animated: true)
     }
     

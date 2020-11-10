@@ -16,6 +16,7 @@ class WebViewViewController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.title = "YouTube"
         let webView:WKWebView = WKWebView(frame: CGRect(x: 0, y: 30, width: view.frame.width, height: view.frame.height-30))
         webView.navigationDelegate = self
         webView.load(myURLRequest!)

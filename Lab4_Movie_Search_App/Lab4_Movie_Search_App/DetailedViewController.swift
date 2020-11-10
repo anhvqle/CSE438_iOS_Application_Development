@@ -15,6 +15,7 @@ class DetailedViewController: UIViewController {
     var poster_path: String!
     var titleName: String!
     var releasedDate: String!
+    var overview: String!
     var score: Double!
     
     var favoriteNames: [String] = []
@@ -23,36 +24,42 @@ class DetailedViewController: UIViewController {
     var favoriteScores: [Double] = []
     var favoriteImages: [UIImage] = []
     var favoritePaths: [String] = []
+    var favoriteOverviews: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        view.backgroundColor = .lightGray
+        self.title = titleName
         view.backgroundColor = .white
-        let theImageFrame = CGRect(x: view.frame.midX - image.size.width/2, y: 120, width: image.size.width, height: image.size.height)
+        let theImageFrame = CGRect(x: view.frame.midX - image.size.width/2, y: 90, width: image.size.width, height: image.size.height)
         let imageView = UIImageView(frame: theImageFrame)
         imageView.image = image
         view.addSubview(imageView)
         
-        let titleFrame = CGRect(x: 0, y: image.size.height + 140, width: view.frame.width, height: 30)
-        let titleView = UILabel(frame: titleFrame)
-        titleView.text = titleName!
-        titleView.font = UIFont.boldSystemFont(ofSize: 20.0)
-        titleView.textAlignment = .center
-        view.addSubview(titleView)
-        
-        let releaseDateFrame = CGRect(x: 0, y: image.size.height + 190, width: view.frame.width, height: 30)
+        let releaseDateFrame = CGRect(x: 0, y: image.size.height + 100, width: view.frame.width, height: 30)
         let releaseDateView = UILabel(frame: releaseDateFrame)
         releaseDateView.text = "Released: \(releasedDate!)"
+        releaseDateView.font = UIFont.boldSystemFont(ofSize: 16.0)
         releaseDateView.textAlignment = .center
         view.addSubview(releaseDateView)
         
-        let scoreFrame = CGRect(x: 0, y: image.size.height + 240, width: view.frame.width, height: 30)
+        let scoreFrame = CGRect(x: 0, y: image.size.height + 140, width: view.frame.width, height: 30)
         let scoreView = UILabel(frame: scoreFrame)
-        scoreView.text = "Score: \(score!)/10"
+        scoreView.text = "Score: \(score!*10)/100"
+        scoreView.font = UIFont.boldSystemFont(ofSize: 16.0)
         scoreView.textAlignment = .center
         view.addSubview(scoreView)
         
-        let favoriteButton = CGRect(x: 0, y: image.size.height + 300, width: view.frame.width, height: 30)
+        let overviewFrame = CGRect(x: 0, y: image.size.height + 120, width: view.frame.width, height: 300)
+        let overviewView = UILabel(frame: overviewFrame)
+        overviewView.text = overview!
+        overviewView.lineBreakMode = .byWordWrapping
+        overviewView.numberOfLines = 12
+        overviewView.textAlignment = .center
+        view.addSubview(overviewView)
+        
+        let favoriteButton = CGRect(x: 0, y: image.size.height + 380, width: view.frame.width, height: 30)
         let favoriteView = UIButton(frame: favoriteButton)
         favoriteView.backgroundColor = .white
         favoriteView.setTitleColor(.blue, for: .normal)
@@ -60,7 +67,7 @@ class DetailedViewController: UIViewController {
         favoriteView.addTarget(self, action: #selector(addFavorite), for: .touchUpInside)
         view.addSubview(favoriteView)
         
-        let trailerButton = CGRect(x: 0, y: image.size.height + 360, width: view.frame.width, height: 30)
+        let trailerButton = CGRect(x: 0, y: image.size.height + 420, width: view.frame.width, height: 30)
         let trailerView = UIButton(frame: trailerButton)
         trailerView.backgroundColor = .white
         trailerView.setTitleColor(.red, for: .normal)
@@ -77,20 +84,22 @@ class DetailedViewController: UIViewController {
         self.favoriteScores = UserDefaults.standard.array(forKey: "MyScore") as? [Double] ?? []
         self.favoriteImages = UserDefaults.standard.array(forKey: "MyImagePath") as? [UIImage] ?? []
         self.favoritePaths = UserDefaults.standard.array(forKey: "MyImageString") as? [String] ?? []
+        
         if( !self.favoriteIDs.contains(self.movieID!) ){
+            
             self.favoriteNames.append(self.titleName!)
             self.favoriteIDs.append(self.movieID!)
             self.favoriteDates.append(self.releasedDate!)
             self.favoriteScores.append(self.score!)
-            //self.favoriteImages.append(UIImage(named: "notfound.png")!)
             self.favoritePaths.append(self.poster_path!)
+            self.favoriteOverviews.append(self.overview!)
             
             UserDefaults.standard.set(self.favoriteNames, forKey: "MyName")
             UserDefaults.standard.set(self.favoriteIDs, forKey: "MyID")
             UserDefaults.standard.set(self.favoriteDates, forKey: "MyDate")
             UserDefaults.standard.set(self.favoriteScores, forKey: "MyScore")
-            //UserDefaults.standard.set(self.favoriteImages, forKey: "MyImagePath")
             UserDefaults.standard.set(self.favoritePaths, forKey: "MyImageString")
+            UserDefaults.standard.set(self.favoriteOverviews, forKey: "MyOverview")
             
             print(self.favoritePaths)
         }
