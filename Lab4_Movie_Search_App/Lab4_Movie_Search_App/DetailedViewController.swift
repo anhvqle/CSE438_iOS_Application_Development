@@ -84,6 +84,7 @@ class DetailedViewController: UIViewController {
         self.favoriteScores = UserDefaults.standard.array(forKey: "MyScore") as? [Double] ?? []
         self.favoriteImages = UserDefaults.standard.array(forKey: "MyImagePath") as? [UIImage] ?? []
         self.favoritePaths = UserDefaults.standard.array(forKey: "MyImageString") as? [String] ?? []
+        self.favoriteOverviews = UserDefaults.standard.array(forKey: "MyOverview") as? [String] ?? []
         
         if( !self.favoriteIDs.contains(self.movieID!) ){
             
@@ -101,7 +102,7 @@ class DetailedViewController: UIViewController {
             UserDefaults.standard.set(self.favoritePaths, forKey: "MyImageString")
             UserDefaults.standard.set(self.favoriteOverviews, forKey: "MyOverview")
             
-            print(self.favoritePaths)
+            //print(self.favoriteOverviews)
         }
         
         let alert = UIAlertController(title: "Saved", message: "Added to Favorites", preferredStyle: UIAlertController.Style.alert)

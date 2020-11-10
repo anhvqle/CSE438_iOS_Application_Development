@@ -15,32 +15,11 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
             favoriteTableView.reloadData()
         }
     }
-    var favoriteIDs:[Int]!{
-        didSet{
-            favoriteTableView.reloadData()
-        }
-    }
-    var favoriteDates:[String]!{
-        didSet{
-            favoriteTableView.reloadData()
-        }
-    }
-    var favoriteScores:[Double]!{
-        didSet{
-            favoriteTableView.reloadData()
-        }
-    }
-    var favoritePaths:[String]!{
-        didSet{
-            favoriteTableView.reloadData()
-        }
-    }
-    var favoriteOverviews:[String]!{
-        didSet{
-            favoriteTableView.reloadData()
-        }
-    }
-    
+    var favoriteIDs:[Int]!
+    var favoriteDates:[String]!
+    var favoriteScores:[Double]!
+    var favoritePaths:[String]!
+    var favoriteOverviews:[String]!
     @IBOutlet weak var favoriteTableView: UITableView!
     @IBOutlet weak var clearButton: UIBarButtonItem!
     
@@ -176,6 +155,7 @@ class FavoriteViewController: UIViewController, UITableViewDataSource, UITableVi
         self.favoriteScores = []
         self.favoritePaths = []
         self.favoriteOverviews = []
+        
         favoriteTableView.reloadData()
         
         UserDefaults.standard.set([], forKey: "MyName")
